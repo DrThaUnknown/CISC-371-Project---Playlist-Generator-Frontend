@@ -1,0 +1,37 @@
+{
+    "studying": [
+        "Lo-fi Beats - Chillhop", "Focus Piano - Relax", "Coding Vibes - LoFi", 
+        "Deep Focus - Chill Mix", "Mozart for Brain Power", "Rain Sounds & Piano",
+        "Coffee Shop Ambience", "Zelda & Chill", "Interstellar Soundtrack", 
+        "Post-Rock for Reading", "Ambient Gold", "Brain Food - Electronic"
+    ],
+    "workout": [
+        "Eye of the Tiger - Survivor", "Stronger - Kanye West", "Till I Collapse - Eminem", 
+        "Power - Kanye West", "Can't Hold Us - Macklemore", "Numb/Encore - Jay-Z",
+        "Humble - Kendrick Lamar", "Levels - Avicii", "Titanium - David Guetta",
+        "Enter Sandman - Metallica", "Sicko Mode - Travis Scott", "Lose Yourself - Eminem"
+    ],
+    "gym": [
+        "Eye of the Tiger - Survivor", "Stronger - Kanye West", "Till I Collapse - Eminem", 
+        "Power - Kanye West", "Can't Hold Us - Macklemore", "Numb/Encore - Jay-Z",
+        "Humble - Kendrick Lamar", "Levels - Avicii", "Titanium - David Guetta",
+        "Enter Sandman - Metallica", "Sicko Mode - Travis Scott", "Lose Yourself - Eminem"
+    ],
+    "relaxing": [
+        "Sunset Lover - Petit Biscuit", "Lovely - Billie Eilish", "Weightless - Marconi Union", 
+        "Ocean Eyes - Billie Eilish", "Banana Pancakes - Jack Johnson", "Location - Khalid",
+        "Landslide - Fleetwood Mac", "Skinny Love - Bon Iver", "Night Trouble - Petit Biscuit",
+        "Slow Dancing in a Burning Room - John Mayer"
+    ],
+    "commuting": [
+        "Levitating - Dua Lipa", "As It Was - Harry Styles", "Blinding Lights - The Weeknd", 
+        "Golden - Harry Styles", "Heat Waves - Glass Animals", "Stay - Justin Bieber",
+        "Shape of You - Ed Sheeran", "Dakiti - Bad Bunny", "Cruel Summer - Taylor Swift",
+        "Save Your Tears - The Weeknd"
+    ],
+    "party": [
+        "I Gotta Feeling - Black Eyed Peas", "Mr. Brightside - The Killers", 
+        "Dancing Queen - ABBA", "Uptown Funk - Bruno Mars", "Yeah! - Usher",
+        "Don't Stop Believin - Journey", "Party in the USA - Miley Cyrus"
+    ]
+}
