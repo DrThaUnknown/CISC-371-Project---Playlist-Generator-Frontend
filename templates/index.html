@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playlist Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Playlist Generator</h1>
+        <form method="POST">
+            <input type="text" name="activity" placeholder="Enter activity (studying, workout)..." required>
+            <button type="submit">Generate</button>
+        </form>
+
+        {% if playlist %}
+        <div class="results">
+            <h3>Playlist for: {{ activity }}</h3>
+            <ul>
+                {% for song in playlist %}
+                <li>{{ song }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
