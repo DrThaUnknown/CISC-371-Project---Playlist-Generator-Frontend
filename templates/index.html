@@ -2,14 +2,18 @@
 <html>
 <head>
     <title>Playlist Generator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>🎵 Playlist Generator</h1>
+        <h1><i class="fas fa-music bounce-icon"></i> Playlist Generator</h1>
+        
         <form method="POST">
-            <input type="text" name="activity" placeholder="Enter activity (studying, workout)..." required>
-            <button type="submit">Generate</button>
+            <input type="text" name="activity" placeholder="Enter activity (e.g., studying, workout)..." required>
+            <button type="submit">Generate <i class="fas fa-wand-magic-sparkles"></i></button>
         </form>
 
         {% if playlist %}
@@ -17,7 +21,7 @@
             <h3>Playlist for: {{ activity }}</h3>
             <ul>
                 {% for song in playlist %}
-                <li>{{ song }}</li>
+                <li><i class="fas fa-play-circle"></i> {{ song }}</li>
                 {% endfor %}
             </ul>
         </div>
