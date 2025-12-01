@@ -80,5 +80,10 @@ def home():
 
     return render_template('index.html', playlist=playlist, activity=activity, error=error)
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True)

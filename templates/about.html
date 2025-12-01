@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - PlayGen</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="logo">
+                <i class="fas fa-music"></i> PlayGen
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/" {% if request.path == "/" %}class="active"{% endif %}>Home</a></li>
+                <li><a href="/about" {% if request.path == "/about" %}class="active"{% endif %}>About Us</a></li>
+            </ul>
+
+            <button class="theme-toggle" type="button" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ABOUT SECTION -->
+    <main class="about-container">
+        <div class="about-inner tilt-card">
+
+            <h1>About Us</h1>
+
+            <p class="about-text">
+                PlayGen was created to make music discovery faster and more personal. 
+                Instead of searching through playlists or guessing what to play, 
+                you simply tell us your activity studying, gym, relaxing, gaming, and 
+                we instantly generate songs that match your vibe.
+            </p>
+
+            <p class="about-text">
+                This project was built using Python, Flask, HTML, CSS, and curated music logic.
+                Our mission is to create a simple and fun way for anyone to find the right soundtrack 
+                for any moment.
+            </p>
+
+            <p class="about-text">
+                More features coming soon: mood detection, Spotify integration, and personal playlist saving.
+            </p>
+
+        </div>
+    </main>
+
+</body>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</html>
