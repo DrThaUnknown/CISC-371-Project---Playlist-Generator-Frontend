@@ -49,11 +49,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-<<<<<<< HEAD
-    opacity: 1;
-=======
     opacity: 0;
->>>>>>> fd5bf31f8cd8670ecf0c9ed25f4670b843b58335
     transition: opacity 0.35s ease;
     position: relative;
     overflow-x: hidden;
