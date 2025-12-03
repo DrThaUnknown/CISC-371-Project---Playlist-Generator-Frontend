@@ -1,31 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Playlist Generator</title>
+
+    <!-- Fonts + Icons -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <div class="container">
-        <h1><i class="fas fa-music bounce-icon"></i> Playlist Generator</h1>
-        
-        <form method="POST">
-            <input type="text" name="activity" placeholder="Enter activity (e.g., studying, workout)..." required>
-            <button type="submit">Generate <i class="fas fa-wand-magic-sparkles"></i></button>
-        </form>
 
-        {% if playlist %}
-        <div class="results">
-            <h3>Playlist for: {{ activity }}</h3>
-            <ul>
-                {% for song in playlist %}
-                <li><i class="fas fa-play-circle"></i> {{ song }}</li>
-                {% endfor %}
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="logo">
+                <i class="fas fa-music"></i> PlayGen
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="/" {% if request.path == "/" %}class="active"{% endif %}>Home</a></li>
+                <li><a href="/about" {% if request.path == "/about" %}class="active"{% endif %}>About Us</a></li>
             </ul>
+
+            <button class="theme-toggle" type="button" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
-        {% endif %}
-    </div>
+    </nav>
+
+
+    <header class="hero">
+        <div class="hero-inner">
+            <h1 class="hero-title">Generate Playlists Instantly</h1>
+            <p class="hero-subtitle">Type an activity and get curated music suggestions that match your vibe.</p>
+        </div>
+    </header>
+
+    <main class="main-section">
+
+        <div class="container tilt-card">
+
+            <div class="app-header">
+                <h1><i class="fas fa-music bounce-icon"></i> Playlist Generator</h1>
+                <p class="subtitle">Your mood. Your activity. Your soundtrack.</p>
+            </div>
+
+            <div class="form-section">
+                <form method="POST">
+                    <input type="text" name="activity" placeholder="Enter activity (e.g., studying, workout)..." required>
+                    <button type="submit">Generate <i class="fas fa-wand-magic-sparkles"></i></button>
+                </form>
+            </div>
+
+            {% if playlist %}
+            <div class="results">
+                <h3>Playlist for: <span class="activity-name">{{ activity }}</span></h3>
+                <ul class="song-list">
+                    {% for song in playlist %}
+                    <li class="song-item"><i class="fas fa-play-circle"></i> {{ song }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+        </div>
+
+    </main>
+
 </body>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
 </html>

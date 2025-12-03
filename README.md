@@ -19,7 +19,7 @@ pip install customtkinter
 ## Running the Application
 
 ```bash
-python main.py
+flask run
 ```
 
 ## Project Structure
