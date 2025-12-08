@@ -72,18 +72,22 @@ def home():
     if request.method == 'POST':
         activity = request.form.get('activity')
         
-        # CALL THE API instead of reading the JSON file
-        playlist = get_songs_from_api(activity)
-        
-        if not playlist:
-            error = "No songs found for that activity. Try 'gym', 'study', or 'party'."
+        # --- INPUT VALIDATION FIX ---
+        # If the user types nothing OR less than 3 letters, show an error
+        if not activity or len(activity) < 3:
+            error = "Please type a real activity (at least 3 letters)."
+        else:
+            # Only call the API if the input is valid
+            playlist = get_songs_from_api(activity)
+            
+            if not playlist:
+                error = "No songs found for that activity. Try 'gym', 'study', or 'party'."
 
     return render_template('index.html', playlist=playlist, activity=activity, error=error)
 
 @app.route("/about")
 def about():
     return render_template("about.html")
-
 
 if __name__ == '__main__':
     app.run(debug=True)

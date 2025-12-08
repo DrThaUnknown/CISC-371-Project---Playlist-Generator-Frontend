@@ -3,36 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Playlist Generator</title>
-
-    <!-- Fonts + Icons -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
+    
+    <style>
+        .song-item {
+            display: flex; /* Aligns icon and text in a row */
+            align-items: center;
+            gap: 15px; /* Space between icon and text */
+        }
+        
+        .play-link {
+            text-decoration: none;
+            color: inherit; /* Keeps your theme color */
+            transition: transform 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+        }
 
+        .play-link:hover {
+            transform: scale(1.2); /* Grows slightly when hovered */
+            color: #ff0000; /* Turns YouTube Red on hover */
+        }
+
+        .song-text {
+            font-size: 1rem;
+        }
+    </style>
+</head>
 <body>
 
-    <!-- ================= NAVBAR ================= -->
     <nav class="navbar">
         <div class="nav-content">
-            <a href="/" class="logo">
-                <i class="fas fa-music"></i> PlayGen
-            </a>
-
+            <a href="/" class="logo"><i class="fas fa-music"></i> PlayGen</a>
             <ul class="nav-links">
-                <li><a href="/" {% if request.path == "/" %}class="active"{% endif %}>Home</a></li>
-                <li><a href="/about" {% if request.path == "/about" %}class="active"{% endif %}>About Us</a></li>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/about">About Us</a></li>
             </ul>
-
-            <button class="theme-toggle" type="button" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-            </button>
+            <button class="theme-toggle" type="button"><i class="fas fa-moon"></i></button>
         </div>
     </nav>
-
 
     <header class="hero">
         <div class="hero-inner">
@@ -42,9 +54,7 @@
     </header>
 
     <main class="main-section">
-
-        <div class="container tilt-card">
-
+        <div class="container">
             <div class="app-header">
                 <h1><i class="fas fa-music bounce-icon"></i> Playlist Generator</h1>
                 <p class="subtitle">Your mood. Your activity. Your soundtrack.</p>
@@ -52,26 +62,41 @@
 
             <div class="form-section">
                 <form method="POST">
-                    <input type="text" name="activity" placeholder="Enter activity (e.g., studying, workout)..." required>
+                    <input type="text" name="activity" placeholder="Enter activity (e.g., studying, workout)..." required value="{{ activity if activity else '' }}">
                     <button type="submit">Generate <i class="fas fa-wand-magic-sparkles"></i></button>
                 </form>
             </div>
+
+            {% if error %}
+            <div class="error-msg">
+                <i class="fas fa-exclamation-circle"></i> {{ error }}
+            </div>
+            {% endif %}
 
             {% if playlist %}
             <div class="results">
                 <h3>Playlist for: <span class="activity-name">{{ activity }}</span></h3>
                 <ul class="song-list">
                     {% for song in playlist %}
-                    <li class="song-item"><i class="fas fa-play-circle"></i> {{ song }}</li>
+                    <li class="song-item">
+                        <a href="https://www.youtube.com/results?search_query={{ song }}" target="_blank" class="play-link" title="Listen on YouTube">
+                            <i class="fas fa-play-circle fa-2x"></i>
+                        </a>
+                        
+                        <span class="song-text">{{ song }}</span>
+                    </li>
                     {% endfor %}
                 </ul>
             </div>
             {% endif %}
-
         </div>
-
     </main>
 
+    <footer class="app-footer">
+        <p>Created for CISC 371 • Team Phase 1</p>
+        <p class="tiny-text">Powered by Last.fm</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
-<script src="{{ url_for('static', filename='app.js') }}"></script>
 </html>

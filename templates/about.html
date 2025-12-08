@@ -3,60 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>About Us - PlayGen</title>
-
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
 
-    <!-- NAV -->
     <nav class="navbar">
         <div class="nav-content">
-            <a href="/" class="logo">
-                <i class="fas fa-music"></i> PlayGen
-            </a>
-
+            <a href="/" class="logo"><i class="fas fa-music"></i> PlayGen</a>
             <ul class="nav-links">
-                <li><a href="/" {% if request.path == "/" %}class="active"{% endif %}>Home</a></li>
-                <li><a href="/about" {% if request.path == "/about" %}class="active"{% endif %}>About Us</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about" class="active">About Us</a></li>
             </ul>
-
-            <button class="theme-toggle" type="button" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-            </button>
+            <button class="theme-toggle" type="button"><i class="fas fa-moon"></i></button>
         </div>
     </nav>
 
-    <!-- ABOUT SECTION -->
-    <main class="about-container">
-        <div class="about-inner tilt-card">
+    <main class="main-section">
+        <div class="container">
+            <div class="app-header">
+                <h1>About PlayGen</h1>
+                <p class="subtitle">The team behind the music.</p>
+            </div>
 
-            <h1>About Us</h1>
-
-            <p class="about-text">
-                PlayGen was created to make music discovery faster and more personal. 
-                Instead of searching through playlists or guessing what to play, 
-                you simply tell us your activity like studying, gym, relaxing, gaming, and 
-                we instantly generate songs that match your vibe.
-            </p>
+            <div style="text-align: left; margin-bottom: 30px; color: var(--text-muted); line-height: 1.6;">
+                <p><strong>PlayGen</strong> is a smart playlist generator built for <strong>CISC 371</strong>. We integrated the <strong>Last.fm API</strong> to curate music based on your specific activity.</p>
+            </div>
             
-            <p class="about-text">
-                This project was built using Python, Flask, HTML, CSS, and a curated music 
-                recommendation system powered by Last.fm. 
-                Our mission is to create a simple and fun way for anyone to find the right soundtrack 
-                for any moment.
-            </p>
-            
-            <p class="about-text">
-                More features coming soon: mood detection, deeper Last.fm integration, and personal playlist saving.
-            </p>            
+            <div class="results" style="margin-top: 0;">
+                <h3>The Team</h3>
+                <ul class="song-list">
+                    <li class="song-item"><i class="fas fa-user-circle" style="color: var(--primary);"></i> Valeria Carrion (Data & Testing)</li>
+                    <li class="song-item"><i class="fas fa-code" style="color: var(--primary);"></i> Anthony Contreras (Frontend UI)</li>
+                    <li class="song-item"><i class="fas fa-server" style="color: var(--primary);"></i> Alexis De Los Santos (Backend)</li>
+                    <li class="song-item"><i class="fas fa-tasks" style="color: var(--primary);"></i> Gio Correa (Project Manager)</li>
+                    <li class="song-item"><i class="fas fa-terminal" style="color: var(--primary);"></i> Modou (System Admin)</li>
+                </ul>
+            </div>
 
+            <a href="/" style="text-decoration: none;">
+                <button style="margin-top: 30px; width: 100%; justify-content: center;">
+                    <i class="fas fa-arrow-left"></i> Back to Generator
+                </button>
+            </a>
         </div>
     </main>
+
+    <footer class="app-footer">
+        <p>Created for CISC 371 • Team Phase 1</p>
+        <p class="tiny-text">Powered by Last.fm</p>
+    </footer>
 
 </body>
 <script src="{{ url_for('static', filename='app.js') }}"></script>

@@ -1,13 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
+    const root = document.documentElement;
+    const toggleBtn = document.querySelector(".theme-toggle");
+    const key = "playgen-theme";
 
+    // 1. Fade-in Animation on Load
     requestAnimationFrame(() => {
         body.classList.add("page-loaded");
     });
 
-    const links = document.querySelectorAll('a[href^="/"]');
-
-    links.forEach(link => {
+    // 2. Smooth Page Transitions
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
         link.addEventListener("click", e => {
             const url = link.getAttribute("href");
             if (!url || url.startsWith("#")) return;
@@ -17,35 +20,51 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const toggleBtn = document.querySelector(".theme-toggle");
-    const root = document.documentElement;
-    const key = "playgen-theme";
-
-    function setTheme(t) {
-        if (t === "light") {
+    // 3. THE RAINBOW THEME LOGIC
+    // Modes: null (Dark) -> "light" -> "rainbow" -> null (Dark)
+    function setTheme(mode) {
+        // Clear old settings
+        root.removeAttribute("data-theme");
+        
+        // Apply new setting
+        if (mode === "light") {
             root.setAttribute("data-theme", "light");
-        } else {
-            root.removeAttribute("data-theme");
-        }
-        if (toggleBtn) {
-            const icon = toggleBtn.querySelector("i");
-            icon.className = t === "light" ? "fas fa-sun" : "fas fa-moon";
+            if (toggleBtn) toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        } 
+        else if (mode === "rainbow") {
+            root.setAttribute("data-theme", "rainbow");
+            if (toggleBtn) toggleBtn.innerHTML = '<i class="fas fa-rainbow"></i>';
+        } 
+        else {
+            // Default to Dark
+            if (toggleBtn) toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
         }
     }
 
+    // Load saved theme
     const saved = localStorage.getItem(key);
-    if (saved) {
-        setTheme(saved);
-    } else {
-        const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-        setTheme(prefersLight ? "light" : "dark");
-    }
+    setTheme(saved);
 
+    // Click Event: Cycle through modes
     if (toggleBtn) {
         toggleBtn.addEventListener("click", () => {
-            const newTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-            setTheme(newTheme);
-            localStorage.setItem(key, newTheme);
+            const current = root.getAttribute("data-theme");
+            
+            let nextMode = "light"; // Default next step
+            
+            if (current === "light") {
+                nextMode = "rainbow"; // Light -> Rainbow
+            } else if (current === "rainbow") {
+                nextMode = null;      // Rainbow -> Dark
+            }
+            
+            setTheme(nextMode);
+            
+            if (nextMode) {
+                localStorage.setItem(key, nextMode);
+            } else {
+                localStorage.removeItem(key);
+            }
         });
     }
 });
