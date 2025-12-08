@@ -29,7 +29,7 @@ parso==0.8.4
 pillow==11.0.0
 prompt_toolkit==3.0.48
 pure_eval==0.2.3
-pygame==2.6.0
+# pygame==2.6.0
 Pygments==2.18.0
 pyparsing==3.2.0
 python-dateutil==2.9.0.post0

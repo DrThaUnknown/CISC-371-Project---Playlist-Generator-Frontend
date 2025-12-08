@@ -1,8 +1,8 @@
 # CISC 371 Project - Playlist Generator Frontend
 
-Playlist generator application. Users can select an activity (Gym, Study, Running, etc.) and view a generated playlist.
+Playlist generator application. Users can enter an activity (Gym, Study, Running, etc.) and view a generated playlist powered by the Last.fm API.
 
-Built with CustomTkinter.
+Built with Flask, HTML, CSS, and JavaScript.
 
 ## Setup
 
@@ -24,7 +24,11 @@ flask run
 
 ## Project Structure
 
-- `main.py` - Main application file with GUI template
+- `app.py` - Main application file with the flask backend
+- `app.js` - JS code for better Web-App animations and flow
+- `style.css` - Custom CSS code
+- `index.html` - Main page of the Web-App
+- `about.html` - An about page about the project
 - `README.md` - This file
 
 ## Features
@@ -42,24 +46,9 @@ flask run
 - **Playlist Generation**: Click "Generate Playlist" to create a playlist for your selected activity
 - **Playlist Display**: View generated songs with title, artist, and duration
 - **Modern UI**: Dark theme with smooth animations and rounded corners
-- **Backend Ready**: Placeholder method ready for backend API integration
+- **Backend Ready**: backend API integrated
 
-### Theme Customization
 
-Change appearance mode in `main.py`:
-```python
-ctk.set_appearance_mode("dark")  # "dark", "light", or "system"
-ctk.set_default_color_theme("blue")  # "blue", "green", or "dark-blue"
-```
-
-### Future Backend Connection
-
-When ready to connect to backend, install requests:
-```bash
-pip install requests
-```
-
-Then implement the `connect_to_backend()` method in `main.py`.
 
 ## Resources
 
